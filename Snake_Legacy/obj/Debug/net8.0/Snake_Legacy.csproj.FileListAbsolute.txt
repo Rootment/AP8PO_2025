@@ -1,0 +1,14 @@
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\bin\Debug\net8.0\Snake_Legacy.exe
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\bin\Debug\net8.0\Snake_Legacy.deps.json
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\bin\Debug\net8.0\Snake_Legacy.runtimeconfig.json
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\bin\Debug\net8.0\Snake_Legacy.dll
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\bin\Debug\net8.0\Snake_Legacy.pdb
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.AssemblyInfoInputs.cache
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.AssemblyInfo.cs
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.csproj.CoreCompileInputs.cache
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.dll
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\refint\Snake_Legacy.dll
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.pdb
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.genruntimeconfig.cache
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\ref\Snake_Legacy.dll
