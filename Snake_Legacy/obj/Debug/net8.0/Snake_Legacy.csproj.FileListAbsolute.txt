@@ -12,3 +12,4 @@ C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\refint\Sna
 C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.pdb
 C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.genruntimeconfig.cache
 C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\ref\Snake_Legacy.dll
+C:\Users\Mgola\Desktop\AP8PO\AP8PO_2025\Snake_Legacy\obj\Debug\net8.0\Snake_Legacy.sourcelink.json
