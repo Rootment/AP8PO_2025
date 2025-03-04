@@ -7,59 +7,55 @@ namespace Snake
 {
     class Program
     {
-        static void Main ()
+        static void Main()
         {
             WindowHeight = 16;
             WindowWidth = 32;
 
-            var rand = new Random ();
+            var rand = new Random();
 
             var score = 5;
 
             var head = new Pixel(WindowWidth / 2, WindowHeight / 2, ConsoleColor.Red);
-            var berry = new Pixel(rand.Next (1, WindowWidth - 2), rand.Next (1, WindowHeight - 2),     ConsoleColor.Cyan);
+            var berry = new Pixel(rand.Next(1, WindowWidth - 2), rand.Next(1, WindowHeight - 2), ConsoleColor.Cyan);
 
-            var body = new List<Pixel> ();
+            var body = new List<Pixel>();
 
             var currentMovement = Direction.Right;
 
             var gameover = false;
 
-            while (true)
+            while (!gameover)
             {
-                Clear ();
+                Clear();
+                
+                gameover |= (head.XPos == WindowWidth - 1 || head.XPos == 0 || head.YPos == WindowHeight - 1 ||
+                             head.YPos == 0);
 
-                gameover |= (head.XPos == WindowWidth - 1 || head.XPos == 0 || head.YPos ==     WindowHeight - 1 || head.YPos == 0);
-
-                DrawBorder ();
+                DrawBorder();
 
                 if (berry.XPos == head.XPos && berry.YPos == head.YPos)
                 {
                     score++;
-                    berry = new Pixel (rand.Next (1, WindowWidth - 2), rand.Next (1, WindowHeight -     2), ConsoleColor.Cyan);
+                    berry = new Pixel(rand.Next(1, WindowWidth - 2), rand.Next(1, WindowHeight - 2), ConsoleColor.Cyan);
                 }
 
-                for (int i = 0; i < body.Count; i++)
+                foreach (var pixel in body)
                 {
-                    DrawPixel (body[i]);
-                    gameover |= (body[i].XPos == head.XPos && body[i].YPos == head.YPos);
+                    DrawPixel(pixel);
+                    gameover |= (pixel.XPos == head.XPos && pixel.YPos == head.YPos);
                 }
 
-                if (gameover)
-                {
-                    break;
-                }
-
-                DrawPixel (head);
-                DrawPixel (berry);
+                DrawPixel(head);
+                DrawPixel(berry);
 
                 var sw = Stopwatch.StartNew();
                 while (sw.ElapsedMilliseconds <= 500)
                 {
-                    currentMovement = ReadMovement (currentMovement);
+                    currentMovement = ReadMovement(currentMovement);
                 }
 
-                body.Add (new Pixel (head.XPos, head.YPos, ConsoleColor.Green));
+                body.Add(new Pixel(head.XPos, head.YPos, ConsoleColor.Green));
 
                 switch (currentMovement)
                 {
@@ -79,20 +75,21 @@ namespace Snake
 
                 if (body.Count > score)
                 {
-                    body.RemoveAt (0);
+                    body.RemoveAt(0);
                 }
             }
-            SetCursorPosition (WindowWidth / 5, WindowHeight / 2);
-            WriteLine ($"Game over, Score: {score - 5}");
-            SetCursorPosition (WindowWidth / 5, WindowHeight / 2 + 1);
-            ReadKey ();
+
+            SetCursorPosition(WindowWidth / 5, WindowHeight / 2);
+            WriteLine($"Game over, Score: {score - 5}");
+            SetCursorPosition(WindowWidth / 5, WindowHeight / 2 + 1);
+            ReadKey();
         }
 
-        static Direction ReadMovement (Direction movement)
+        static Direction ReadMovement(Direction movement)
         {
             if (KeyAvailable)
             {
-                var key = ReadKey (true).Key;
+                var key = ReadKey(true).Key;
 
                 if (key == ConsoleKey.UpArrow && movement != Direction.Down)
                 {
@@ -115,12 +112,12 @@ namespace Snake
             return movement;
         }
 
-        static void DrawPixel (Pixel pixel)
+        static void DrawPixel(Pixel pixel)
         {
-            SetCursorPosition (pixel.XPos, pixel.YPos);
+            SetCursorPosition(pixel.XPos, pixel.YPos);
             ForegroundColor = pixel.ScreenColor;
-            Write ("■");
-            SetCursorPosition (0, 0);
+            Write("■");
+            SetCursorPosition(0, 0);
         }
 
         static void DrawBorder()
