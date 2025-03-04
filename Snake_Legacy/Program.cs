@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using static System.Console;
 
 namespace Snake
@@ -9,6 +7,8 @@ namespace Snake
     {
         static void Main()
         {
+            ConsoleInterface consoleInterface = new ConsoleInterface();
+            
             WindowHeight = 16;
             WindowWidth = 32;
 
@@ -32,7 +32,7 @@ namespace Snake
                 gameover |= (head.XPos == WindowWidth - 1 || head.XPos == 0 || head.YPos == WindowHeight - 1 ||
                              head.YPos == 0);
 
-                DrawBorder();
+                consoleInterface.DrawBorder();
 
                 if (berry.XPos == head.XPos && berry.YPos == head.YPos)
                 {
@@ -42,17 +42,17 @@ namespace Snake
 
                 foreach (var pixel in body)
                 {
-                    DrawPixel(pixel);
+                    consoleInterface.DrawPixel(pixel);
                     gameover |= (pixel.XPos == head.XPos && pixel.YPos == head.YPos);
                 }
 
-                DrawPixel(head);
-                DrawPixel(berry);
+                consoleInterface.DrawPixel(head);
+                consoleInterface.DrawPixel(berry);
 
                 var sw = Stopwatch.StartNew();
                 while (sw.ElapsedMilliseconds <= 500)
                 {
-                    currentMovement = ReadMovement(currentMovement);
+                    currentMovement = consoleInterface.ReadMovement(currentMovement);
                 }
 
                 body.Add(new Pixel(head.XPos, head.YPos, ConsoleColor.Green));
@@ -71,6 +71,9 @@ namespace Snake
                     case Direction.Right:
                         head.XPos++;
                         break;
+                    default:
+                        WriteLine("Use only up and down arrows or left arrows or right arrows.");
+                        break;
                 }
 
                 if (body.Count > score)
@@ -79,57 +82,8 @@ namespace Snake
                 }
             }
 
-            SetCursorPosition(WindowWidth / 5, WindowHeight / 2);
-            WriteLine($"Game over, Score: {score - 5}");
-            SetCursorPosition(WindowWidth / 5, WindowHeight / 2 + 1);
-            ReadKey();
+            consoleInterface.EndGame(score);
         }
 
-        static Direction ReadMovement(Direction movement)
-        {
-            if (!KeyAvailable) return movement;
-            
-            var key = ReadKey(true).Key;
-
-            movement = key switch
-            {
-                ConsoleKey.UpArrow when movement != Direction.Down => Direction.Up,
-                ConsoleKey.DownArrow when movement != Direction.Up => Direction.Down,
-                ConsoleKey.LeftArrow when movement != Direction.Right => Direction.Left,
-                ConsoleKey.RightArrow when movement != Direction.Left => Direction.Right,
-                _ => movement
-            };
-
-            return movement;
-        }
-
-        private static void DrawPixel(Pixel pixel)
-        {
-            SetCursorPosition(pixel.XPos, pixel.YPos);
-            ForegroundColor = pixel.ScreenColor;
-            Write("■");
-            SetCursorPosition(0, 0);
-        }
-
-        private static void DrawBorder()
-        {
-            for (var i = 0; i < WindowWidth; i++)
-            {
-                SetCursorPosition(i, 0);
-                Write("■");
-
-                SetCursorPosition(i, WindowHeight - 1);
-                Write("■");
-            }
-
-            for (var i = 0; i < WindowHeight; i++)
-            {
-                SetCursorPosition(0, i);
-                Write("■");
-
-                SetCursorPosition(WindowWidth - 1, i);
-                Write("■");
-            }
-        }
     }
 }

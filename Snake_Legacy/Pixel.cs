@@ -1,6 +1,6 @@
 ﻿namespace Snake;
 
-struct Pixel
+public struct Pixel
 {
     public Pixel (int xPos, int yPos, ConsoleColor color)
     {
