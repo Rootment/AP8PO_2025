@@ -8,6 +8,7 @@ public struct Pixel
         YPos = yPos;
         ScreenColor = color;
     }
+    
     public int XPos { get; set; }
     public int YPos { get; set; }
     public ConsoleColor ScreenColor { get; set; }

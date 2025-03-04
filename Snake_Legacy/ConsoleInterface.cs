@@ -50,7 +50,7 @@ public class ConsoleInterface
         }
     }
 
-    public void EndGame(int score)
+    public void ShowGameOver(int score)
     {
         SetCursorPosition(WindowWidth / 5, WindowHeight / 2);
         WriteLine($"Game over, Score: {score - 5}");
