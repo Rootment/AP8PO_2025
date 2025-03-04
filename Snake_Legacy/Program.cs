@@ -16,8 +16,8 @@ namespace Snake
 
             var score = 5;
 
-            var head = new Pixel (WindowWidth / 2, WindowHeight / 2, ConsoleColor.Red);
-            var berry = new Pixel (rand.Next (1, WindowWidth - 2), rand.Next (1, WindowHeight - 2),     ConsoleColor.Cyan);
+            var head = new Pixel(WindowWidth / 2, WindowHeight / 2, ConsoleColor.Red);
+            var berry = new Pixel(rand.Next (1, WindowWidth - 2), rand.Next (1, WindowHeight - 2),     ConsoleColor.Cyan);
 
             var body = new List<Pixel> ();
 
@@ -123,46 +123,25 @@ namespace Snake
             SetCursorPosition (0, 0);
         }
 
-        static void DrawBorder ()
+        static void DrawBorder()
         {
             for (int i = 0; i < WindowWidth; i++)
             {
-                SetCursorPosition (i, 0);
-                Write ("■");
+                SetCursorPosition(i, 0);
+                Write("■");
 
-                SetCursorPosition (i, WindowHeight - 1);
-                Write ("■");
+                SetCursorPosition(i, WindowHeight - 1);
+                Write("■");
             }
 
             for (int i = 0; i < WindowHeight; i++)
             {
-                SetCursorPosition (0, i);
-                Write ("■");
+                SetCursorPosition(0, i);
+                Write("■");
 
-                SetCursorPosition (WindowWidth - 1, i);
-                Write ("■");
+                SetCursorPosition(WindowWidth - 1, i);
+                Write("■");
             }
-        }
-
-        struct Pixel
-        {
-            public Pixel (int xPos, int yPos, ConsoleColor color)
-            {
-                XPos = xPos;
-                YPos = yPos;
-                ScreenColor = color;
-            }
-            public int XPos { get; set; }
-            public int YPos { get; set; }
-            public ConsoleColor ScreenColor { get; set; }
-        }
-
-        enum Direction
-        {
-            Up,
-            Down,
-            Right,
-            Left
         }
     }
 }
