@@ -87,32 +87,23 @@ namespace Snake
 
         static Direction ReadMovement(Direction movement)
         {
-            if (KeyAvailable)
-            {
-                var key = ReadKey(true).Key;
+            if (!KeyAvailable) return movement;
+            
+            var key = ReadKey(true).Key;
 
-                if (key == ConsoleKey.UpArrow && movement != Direction.Down)
-                {
-                    movement = Direction.Up;
-                }
-                else if (key == ConsoleKey.DownArrow && movement != Direction.Up)
-                {
-                    movement = Direction.Down;
-                }
-                else if (key == ConsoleKey.LeftArrow && movement != Direction.Right)
-                {
-                    movement = Direction.Left;
-                }
-                else if (key == ConsoleKey.RightArrow && movement != Direction.Left)
-                {
-                    movement = Direction.Right;
-                }
-            }
+            movement = key switch
+            {
+                ConsoleKey.UpArrow when movement != Direction.Down => Direction.Up,
+                ConsoleKey.DownArrow when movement != Direction.Up => Direction.Down,
+                ConsoleKey.LeftArrow when movement != Direction.Right => Direction.Left,
+                ConsoleKey.RightArrow when movement != Direction.Left => Direction.Right,
+                _ => movement
+            };
 
             return movement;
         }
 
-        static void DrawPixel(Pixel pixel)
+        private static void DrawPixel(Pixel pixel)
         {
             SetCursorPosition(pixel.XPos, pixel.YPos);
             ForegroundColor = pixel.ScreenColor;
@@ -120,9 +111,9 @@ namespace Snake
             SetCursorPosition(0, 0);
         }
 
-        static void DrawBorder()
+        private static void DrawBorder()
         {
-            for (int i = 0; i < WindowWidth; i++)
+            for (var i = 0; i < WindowWidth; i++)
             {
                 SetCursorPosition(i, 0);
                 Write("■");
@@ -131,7 +122,7 @@ namespace Snake
                 Write("■");
             }
 
-            for (int i = 0; i < WindowHeight; i++)
+            for (var i = 0; i < WindowHeight; i++)
             {
                 SetCursorPosition(0, i);
                 Write("■");
