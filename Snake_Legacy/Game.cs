@@ -6,59 +6,63 @@ namespace Snake;
 public class Game
 {
     private readonly int _windowHeight;
-    
+
     private readonly int _windowWidth;
-    
-    private readonly Random _random = new ();
+
+    private readonly Random _random = new();
+
+    private readonly int _speed;
     private int Score { get; set; }
-    
+
     private Pixel _head;
-    
+
     private Pixel _berry;
-    
+
     private List<Pixel> _body;
 
     private readonly ConsoleInterface _consoleInterface;
-    
-    private Direction _currentMovement;
-    private bool _gameOver;
-    
 
-    public Game(int windowWidth, int windowHeight, int score)
+    private Direction _currentMovement;
+
+    private bool _gameOver;
+
+
+    public Game(int windowWidth, int windowHeight, int score, int speed)
     {
         _windowHeight = windowWidth;
         _windowWidth = windowHeight;
-         Score = score;
-         
-         _consoleInterface = new ConsoleInterface();
+        Score = score;
+        _speed = speed;
+
+        _consoleInterface = new ConsoleInterface();
     }
 
     public void Start()
     {
         Initialize();
-        
+
         while (!_gameOver)
         {
             RenderFrame();
             ProcessInput();
             UpdateState();
         }
-        
+
         _consoleInterface.ShowGameOver(Score);
     }
-    
+
     private void Initialize()
     {
         WindowHeight = _windowHeight;
         WindowWidth = _windowWidth;
-        
+
         _head = new Pixel(WindowWidth / 2, WindowHeight / 2, ConsoleColor.Red);
         _berry = GenerateBerry();
         _body = new List<Pixel>();
         _currentMovement = Direction.Right;
         _gameOver = false;
     }
-    
+
     private Pixel GenerateBerry()
     {
         return new Pixel(
@@ -67,7 +71,7 @@ public class Game
             ConsoleColor.Cyan
         );
     }
-    
+
     private void RenderFrame()
     {
         Clear();
@@ -80,8 +84,8 @@ public class Game
             _consoleInterface.DrawPixel(pixel);
         }
     }
-    
-    
+
+
     private void MoveHead()
     {
         switch (_currentMovement)
@@ -104,12 +108,13 @@ public class Game
     private void ProcessInput()
     {
         var stopwatch = Stopwatch.StartNew();
-        while (stopwatch.ElapsedMilliseconds <= 500)
+
+        while (stopwatch.ElapsedMilliseconds <= _speed)
         {
             _currentMovement = _consoleInterface.ReadMovement(_currentMovement);
         }
     }
-    
+
     private void UpdateState()
     {
         _gameOver |= IsCollision();
@@ -147,7 +152,4 @@ public class Game
 
         return false;
     }
-    
-    
-    
 }

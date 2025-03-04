@@ -7,7 +7,7 @@ namespace Snake
     {
         static void Main()
         {
-            Game game = new Game(32,16,5);
+            Game game = new Game(16,32,5,50);
             
             game.Start();
         }
