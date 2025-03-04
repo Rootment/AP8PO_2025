@@ -1,5 +1,8 @@
 ﻿namespace Snake;
 
+/// <summary>
+/// Struct representing pixel in console
+/// </summary>
 public struct Pixel
 {
     public Pixel (int xPos, int yPos, ConsoleColor color)

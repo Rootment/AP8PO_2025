@@ -1,8 +1,17 @@
 ﻿namespace Snake;
 using static System.Console;
 
+/// <summary>
+/// Console interface for snake
+/// </summary>
 public class ConsoleInterface
 {
+    
+    /// <summary>
+    /// Read movement based on input
+    /// </summary>
+    /// <param name="movement">Key input</param>
+    /// <returns>Returns Direction</returns>
     public Direction ReadMovement(Direction movement)
     {
         if (!KeyAvailable) return movement;
@@ -21,6 +30,10 @@ public class ConsoleInterface
         return movement;
     }
 
+    /// <summary>
+    /// Draw pixel in console interface
+    /// </summary>
+    /// <param name="pixel">One pixel to be drawn</param>
     public void DrawPixel(Pixel pixel)
     {
         SetCursorPosition(pixel.XPos, pixel.YPos);
@@ -29,6 +42,9 @@ public class ConsoleInterface
         SetCursorPosition(0, 0);
     }
 
+    /// <summary>
+    /// Draw borders for console interface
+    /// </summary>
     public void DrawBorder()
     {
         for (var i = 0; i < WindowWidth; i++)
@@ -50,6 +66,10 @@ public class ConsoleInterface
         }
     }
 
+    /// <summary>
+    /// Show game score after gameover
+    /// </summary>
+    /// <param name="score">Reached score</param>
     public void ShowGameOver(int score)
     {
         SetCursorPosition(WindowWidth / 5, WindowHeight / 2);

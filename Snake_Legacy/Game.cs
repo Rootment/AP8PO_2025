@@ -3,6 +3,9 @@ using static System.Console;
 
 namespace Snake;
 
+/// <summary>
+/// Represents game logic
+/// </summary>
 public class Game
 {
     private readonly int _windowHeight;
@@ -27,6 +30,13 @@ public class Game
     private bool _gameOver;
 
 
+    /// <summary>
+    /// Setup game settings on instance creation
+    /// </summary>
+    /// <param name="windowWidth">Width of console interface</param>
+    /// <param name="windowHeight">Height of console interface</param>
+    /// <param name="score">Score from start</param>
+    /// <param name="speed">Speed of snake</param>
     public Game(int windowWidth, int windowHeight, int score, int speed)
     {
         _windowHeight = windowWidth;
@@ -37,6 +47,9 @@ public class Game
         _consoleInterface = new ConsoleInterface();
     }
 
+    /// <summary>
+    /// Start game
+    /// </summary>
     public void Start()
     {
         Initialize();
@@ -51,6 +64,9 @@ public class Game
         _consoleInterface.ShowGameOver(Score);
     }
 
+    /// <summary>
+    /// Initialize some game settings
+    /// </summary>
     private void Initialize()
     {
         WindowHeight = _windowHeight;
@@ -63,6 +79,10 @@ public class Game
         _gameOver = false;
     }
 
+    /// <summary>
+    /// Generate berry at random position
+    /// </summary>
+    /// <returns></returns>
     private Pixel GenerateBerry()
     {
         return new Pixel(
@@ -72,6 +92,9 @@ public class Game
         );
     }
 
+    /// <summary>
+    /// Render new frame, draw pixel and border
+    /// </summary>
     private void RenderFrame()
     {
         Clear();
@@ -85,7 +108,9 @@ public class Game
         }
     }
 
-
+    /// <summary>
+    /// Move head of snake based on direction
+    /// </summary>
     private void MoveHead()
     {
         switch (_currentMovement)
@@ -104,7 +129,11 @@ public class Game
                 break;
         }
     }
-
+    
+    
+    /// <summary>
+    /// Proccess how fast is snake moving //TODO ?
+    /// </summary>
     private void ProcessInput()
     {
         var stopwatch = Stopwatch.StartNew();
@@ -115,6 +144,9 @@ public class Game
         }
     }
 
+    /// <summary>
+    /// Update state, score
+    /// </summary>
     private void UpdateState()
     {
         _gameOver |= IsCollision();
@@ -135,6 +167,10 @@ public class Game
         }
     }
 
+    /// <summary>
+    /// Check for collision
+    /// </summary>
+    /// <returns>Returns if collision is present or not</returns>
     private bool IsCollision()
     {
         if (_head.XPos == WindowWidth - 1 || _head.XPos == 0 || _head.YPos == WindowHeight - 1 || _head.YPos == 0)
@@ -142,14 +178,14 @@ public class Game
             return true;
         }
 
-        foreach (var pixel in _body)
-        {
-            if (pixel.XPos == _head.XPos && pixel.YPos == _head.YPos)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        // foreach (var pixel in _body)
+        // {
+        //     if (pixel.XPos == _head.XPos && pixel.YPos == _head.YPos)
+        //     {
+        //         return true;
+        //     }
+        // }
+        
+        return _body.Any(pixel => pixel.XPos == _head.XPos && pixel.YPos == _head.YPos);
     }
 }
