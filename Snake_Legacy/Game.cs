@@ -15,7 +15,8 @@ public class Game
     private readonly Random _random = new();
 
     private readonly int _speed;
-    private int Score { get; set; }
+    
+    private int _score;
 
     private Pixel _head;
 
@@ -35,13 +36,13 @@ public class Game
     /// </summary>
     /// <param name="windowWidth">Width of console interface</param>
     /// <param name="windowHeight">Height of console interface</param>
-    /// <param name="score">Score from start</param>
+    /// <param name="_score">_score from start</param>
     /// <param name="speed">Speed of snake</param>
     public Game(int windowWidth, int windowHeight, int score, int speed)
     {
         _windowHeight = windowWidth;
         _windowWidth = windowHeight;
-        Score = score;
+        _score = score;
         _speed = speed;
 
         _consoleInterface = new ConsoleInterface();
@@ -61,7 +62,7 @@ public class Game
             UpdateState();
         }
 
-        _consoleInterface.ShowGameOver(Score);
+        _consoleInterface.ShowGameOver(_score);
     }
 
     /// <summary>
@@ -153,7 +154,7 @@ public class Game
 
         if (_head.XPos == _berry.XPos && _head.YPos == _berry.YPos)
         {
-            Score++;
+            _score++;
             _berry = GenerateBerry();
         }
 
@@ -161,7 +162,7 @@ public class Game
 
         MoveHead();
 
-        if (_body.Count > Score)
+        if (_body.Count > _score)
         {
             _body.RemoveAt(0);
         }
@@ -178,14 +179,6 @@ public class Game
             return true;
         }
 
-        // foreach (var pixel in _body)
-        // {
-        //     if (pixel.XPos == _head.XPos && pixel.YPos == _head.YPos)
-        //     {
-        //         return true;
-        //     }
-        // }
-        
-        return _body.Any(pixel => pixel.XPos == _head.XPos && pixel.YPos == _head.YPos);
+        return _body.Contains(_head);
     }
 }
