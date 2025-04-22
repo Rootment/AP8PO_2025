@@ -10,7 +10,7 @@ namespace Snake
             const int windowWidth = 16;
             const int windowHeight = 32;
             const int score = 5;
-            const int speed = 50;
+            const int speed = 20;
             
             Game game = new (windowWidth,windowHeight,score,speed);
             
