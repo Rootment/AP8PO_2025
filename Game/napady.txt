@@ -1,4 +1,5 @@
 1. dinosaur má achievmenty -> jako ve hře vampire survivor (přes tyto achievmenty se mu odemikají ability max2)
+-> tyto achievmenty se po sebrání předmětu "achievmenty" ve hře, se zobrazí na home menu, spolu s abilitami 
 2. možné ability -> double jump, bite, crush, shield, second chance, unvunerability for a brief time
 3. achievmenty v pořadí podle abilit -> jump in total 5k times, die by pterodactil, die by cactus, 
 die for a total of 50 times, eat 10 pterodactils.
