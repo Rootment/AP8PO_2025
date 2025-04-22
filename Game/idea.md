@@ -77,7 +77,8 @@ A procedurally generated desert environment with randomized obstacles and occasi
 ---
 
 ## Characters  
-- **Dino**: The main character, a small pixelated dinosaur.  
+- **Dino**: The main character, a small pixelated dinosaur.
+- **Possibility of unlockalble characters**: Basicly skins for main character
 
 ---
 
