@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bubyqombprey6"]
+
+[ext_resource type="PackedScene" uid="uid://dvggurh62ja6r" path="res://scenes/ground_1.0.tscn" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://i516lelaw0i" path="res://scenes/bg.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cbx2supmi7v6l" path="res://scenes/knight_character.tscn" id="2_lnu2h"]
+
+[node name="Game" type="Node2D"]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("1_lnu2h")]
+
+[node name="Bg" parent="." instance=ExtResource("1_yqjtg")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(28, 131)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(166, 97)
+zoom = Vector2(3.5, 3.5)

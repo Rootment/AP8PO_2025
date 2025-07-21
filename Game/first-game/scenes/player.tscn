@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://bj0a3yrk0somw"]
+
+[ext_resource type="Texture2D" uid="uid://b1gb2updxktav" path="res://assets/sprites/Dinosaur.png" id="1_3vyb7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(70, 0, 70, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(140, 0, 70, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(210, 0, 70, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(280, 0, 70, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
+radius = 9.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 6.625
+height = 19.9965
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tuyoq")
+frame_progress = 0.574927
+
+[node name="CollisionShapeBody" type="CollisionShape2D" parent="."]
+position = Vector2(3, 7)
+shape = SubResource("CapsuleShape2D_3vyb7")
+
+[node name="CollisionShapeHead" type="CollisionShape2D" parent="."]
+position = Vector2(15, -16)
+rotation = -1.56554
+shape = SubResource("CapsuleShape2D_g2els")
