@@ -1,5 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://cbx2supmi7v6l"]
+[gd_scene load_steps=33 format=3 uid="uid://cbx2supmi7v6l"]
 
+[ext_resource type="Script" uid="uid://doe2n60imfg3x" path="res://scripts/knight_character.gd" id="1_0yhmi"]
 [ext_resource type="Texture2D" uid="uid://bxjcd0psd72m8" path="res://assets/sprites/knight.png" id="1_j0cia"]
 [ext_resource type="AudioStream" uid="uid://7dktm50nttts" path="res://assets/sounds/jump.wav" id="2_0yhmi"]
 
@@ -216,19 +217,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxa34"]
 size = Vector2(11, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0cia"]
+size = Vector2(11, 10)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_0yhmi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ya6vb")
-animation = &"death"
+animation = &"roll"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="RunCol" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 4)
 shape = SubResource("RectangleShape2D_rxa34")
 
+[node name="DuckCol" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 6)
+shape = SubResource("RectangleShape2D_j0cia")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0yhmi")
-volume_db = -25.0
