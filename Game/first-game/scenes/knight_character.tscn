@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cbx2supmi7v6l"]
+[gd_scene load_steps=37 format=3 uid="uid://cbx2supmi7v6l"]
 
 [ext_resource type="Script" uid="uid://doe2n60imfg3x" path="res://scripts/knight_character.gd" id="1_0yhmi"]
 [ext_resource type="Texture2D" uid="uid://bxjcd0psd72m8" path="res://assets/sprites/knight.png" id="1_j0cia"]
@@ -51,6 +51,22 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgu1s"]
 atlas = ExtResource("1_j0cia")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnisl"]
+atlas = ExtResource("1_j0cia")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2s6o"]
+atlas = ExtResource("1_j0cia")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdwnk"]
+atlas = ExtResource("1_j0cia")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd61i"]
+atlas = ExtResource("1_j0cia")
+region = Rect2(224, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufd5b"]
 atlas = ExtResource("1_j0cia")
@@ -125,7 +141,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -142,7 +158,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -159,6 +175,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_cnisl")
+}, {
+"duration": 1.25,
+"texture": SubResource("AtlasTexture_h2s6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdwnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd61i")
+}],
+"loop": true,
+"name": &"jump",
 "speed": 7.0
 }, {
 "frames": [{
@@ -182,7 +215,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"roll",
-"speed": 7.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -211,7 +244,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 7.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxa34"]
@@ -225,8 +258,9 @@ z_index = 1
 script = ExtResource("1_0yhmi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ya6vb")
-animation = &"roll"
+animation = &"hit"
 autoplay = "idle"
 
 [node name="RunCol" type="CollisionShape2D" parent="."]
@@ -237,5 +271,6 @@ shape = SubResource("RectangleShape2D_rxa34")
 position = Vector2(0.5, 6)
 shape = SubResource("RectangleShape2D_j0cia")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Jump sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0yhmi")
+volume_db = 8.323

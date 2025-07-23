@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b8fivb4ggsj3v" path="res://assets/sprites/world_tileset.png" id="1_83sht"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f2nm7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_83sht"]
 texture = ExtResource("1_83sht")
 0:0/0 = 0
 1:0/0 = 0
@@ -133,7 +133,7 @@ texture = ExtResource("1_83sht")
 3:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_eth7l"]
-sources/0 = SubResource("TileSetAtlasSource_f2nm7")
+sources/0 = SubResource("TileSetAtlasSource_83sht")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0apxr"]
 size = Vector2(2303.5, 47.5)
