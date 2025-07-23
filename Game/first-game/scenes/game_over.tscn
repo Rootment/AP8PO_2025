@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5gkovp3wfqh6"]
+
+[ext_resource type="FontFile" uid="uid://cvrvotq65tcte" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_xeevv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqhvx"]
+bg_color = Color(0.528968, 0.649777, 0.348877, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbwuq"]
+bg_color = Color(0.331497, 0.690463, 0.40646, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_racf3"]
+bg_color = Color(0.180392, 0.670588, 0.6, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xeevv"]
+bg_color = Color(0.913725, 0.847059, 0.203922, 0.392157)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="GameOver" type="CanvasLayer"]
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.505
+anchor_top = 0.48
+anchor_right = 0.505
+anchor_bottom = 0.48
+offset_left = -96.76
+offset_top = -29.04
+offset_right = 96.24
+offset_bottom = 28.96
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xeevv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wqhvx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbwuq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_racf3")
+text = "RESTART"
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.617
+anchor_right = 0.51
+anchor_bottom = 0.617
+offset_left = -198.52
+offset_top = -28.816
+offset_right = 199.48
+offset_bottom = 29.184
+theme_override_styles/panel = SubResource("StyleBoxFlat_xeevv")
+
+[node name="HighScore" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.476
+anchor_top = 0.617
+anchor_right = 0.476
+anchor_bottom = 0.617
+offset_left = -179.448
+offset_top = -26.786
+offset_right = 28.552
+offset_bottom = 13.214
+theme_override_fonts/font = ExtResource("1_xeevv")
+text = "HIGHEST SCORE:"
+horizontal_alignment = 1
+vertical_alignment = 1

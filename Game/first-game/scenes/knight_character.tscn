@@ -251,7 +251,7 @@ animations = [{
 size = Vector2(11, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0cia"]
-size = Vector2(11, 10)
+size = Vector2(11, 8)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 z_index = 1
@@ -268,7 +268,7 @@ position = Vector2(0.5, 4)
 shape = SubResource("RectangleShape2D_rxa34")
 
 [node name="DuckCol" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 6)
+position = Vector2(0.5, 8)
 shape = SubResource("RectangleShape2D_j0cia")
 
 [node name="Jump sound" type="AudioStreamPlayer" parent="."]

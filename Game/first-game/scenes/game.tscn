@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bubyqombprey6"]
+[gd_scene load_steps=7 format=3 uid="uid://bubyqombprey6"]
 
 [ext_resource type="Script" uid="uid://buftugybrwj2q" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dvggurh62ja6r" path="res://scenes/ground_1.0.tscn" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://i516lelaw0i" path="res://scenes/bg.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cbx2supmi7v6l" path="res://scenes/knight_character.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cqfxqqm0snpmc" path="res://scenes/hud.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://c5gkovp3wfqh6" path="res://scenes/game_over.tscn" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -21,3 +22,6 @@ position = Vector2(166, 97)
 zoom = Vector2(3.5, 3.5)
 
 [node name="HUD" parent="." instance=ExtResource("5_iywne")]
+
+[node name="GameOver" parent="." instance=ExtResource("6_p57ef")]
+process_mode = 2
