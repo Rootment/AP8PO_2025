@@ -6,13 +6,14 @@ var crate = preload("res://scenes/create_obstacle.tscn")
 var slime = preload("res://scenes/slime_obstacle.tscn")
 var obstacles_types:=[tree,wall,crate]
 var obstacles:Array
-var slime_heights:=[25,60]
+var slime_heights:=[30,65]
 
 const CHAR_START_POS := Vector2i(80,160)
 const CAM_START_POS := Vector2i(165,100)
 var difficulty
 const MAX_DIFFICULTY : int = 2
 var highest_score : int
+var half_screen
 var score : int
 const SCORE_MODIFIER : int = 10
 var speed : float
@@ -27,6 +28,7 @@ var last_obs
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_window().size
+	print(screen_size)
 	$GameOver.get_node("Button").pressed.connect(new_game)
 	new_game()
 
@@ -62,7 +64,7 @@ func _process(delta):
 		$Knight.position.x += speed
 		$Camera2D.position.x += speed
 		
-		var half_screen = screen_size * 0.137
+		half_screen = screen_size * 0.137
 		var left_edge = $Camera2D.position.x - half_screen.x
 		var right_edge = $Camera2D.position.x + half_screen.x
 		# Clamping pouze horizontálně (vertikálně, pokud chceš)
@@ -79,12 +81,12 @@ func _process(delta):
 				remove_obs(obs)
 		
 	else:
-		var half_screen = screen_size * 0.137
+		half_screen = screen_size * 0.137
 		var left_edge = $Camera2D.position.x - half_screen.x
 		var right_edge = $Camera2D.position.x + half_screen.x
 		# Clamping pouze horizontálně (vertikálně, pokud chceš)
 		$Knight.position.x = clamp($Knight.position.x, left_edge, right_edge)
-		if Input.is_action_pressed("ui_accept"):
+		if Input.is_action_pressed("jump"):
 			game_running=true
 			$HUD.get_node("StartLabel").hide()
 
@@ -106,7 +108,8 @@ func generate_obs():
 		var max_obs = difficulty + 1
 		for i in range(randi()%max_obs+1):
 			obs = obs_type.instantiate()
-			var obs_x: int = screen_size.x + score + 100 + (i*100)*speed
+			var right_edge = $Camera2D.position.x + half_screen.x
+			var obs_x: int = right_edge + (score%2)*speed  + 100 + (i*100)
 			# fixed generating axis y -> taky je každy jinak velký
 			var obs_y: int = GROUND_HEIGHT - 71.5
 			last_obs = obs
@@ -138,6 +141,7 @@ func adjust_difficulty():
 		difficulty=MAX_DIFFICULTY
 
 func game_over():
+	$Hit_sound.play()
 	check_high_csore()
 	get_tree().paused = true
 	game_running = false

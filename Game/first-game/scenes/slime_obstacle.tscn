@@ -56,7 +56,7 @@ scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_wd575")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.324274
+frame_progress = 0.139449
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

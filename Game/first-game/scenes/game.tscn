@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bubyqombprey6"]
+[gd_scene load_steps=8 format=3 uid="uid://bubyqombprey6"]
 
 [ext_resource type="Script" uid="uid://buftugybrwj2q" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dvggurh62ja6r" path="res://scenes/ground_1.0.tscn" id="1_lnu2h"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cbx2supmi7v6l" path="res://scenes/knight_character.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cqfxqqm0snpmc" path="res://scenes/hud.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://c5gkovp3wfqh6" path="res://scenes/game_over.tscn" id="6_p57ef"]
+[ext_resource type="AudioStream" uid="uid://h6b0r4h6j7bw" path="res://assets/sounds/hurt.wav" id="7_u5sy4"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -25,3 +26,8 @@ zoom = Vector2(3.5, 3.5)
 
 [node name="GameOver" parent="." instance=ExtResource("6_p57ef")]
 process_mode = 2
+
+[node name="Hit_sound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 2
+stream = ExtResource("7_u5sy4")
+bus = &"SFX"

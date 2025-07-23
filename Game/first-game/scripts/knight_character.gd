@@ -4,15 +4,10 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 
-var is_dead = false
-
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
-	if is_dead:
-		velocity = Vector2.ZERO
-		return
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("move_left", "move_right")
 	velocity += get_gravity() * delta
 	# Add the gravity.
 	if is_on_floor():
@@ -21,18 +16,18 @@ func _physics_process(delta):
 		else:
 			$RunCol.disabled=false
 			# Handle jump.
-			if Input.is_action_pressed("ui_accept"):
+			if Input.is_action_pressed("jump"):
+				$Jump_sound.play()
 				$AnimatedSprite2D.play("jump")
 				velocity.y = JUMP_VELOCITY
-			elif Input.is_action_pressed("ui_down"):
+			elif Input.is_action_pressed("roll"):
 				$AnimatedSprite2D.play("roll")
 				$RunCol.disabled=true
 			else :
 				$AnimatedSprite2D.play("run")
 				animated_sprite.flip_h = false
 	else:
-		$AnimatedSprite2D.play("jump")
-		if Input.is_action_pressed("ui_down"):
+		if Input.is_action_pressed("roll"):
 			velocity.y += 20
 			
 	if direction > 0:
@@ -44,8 +39,3 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
-	
-func die():
-	is_dead = true
-	$AnimatedSprite2D.play("death")
-	print("Player died!")
